@@ -17,6 +17,7 @@ function fetchName(){
 // change from P Tag
 function renderDestinations(destination){
     const destinationBar = document.querySelector('#destination-bar')
+    console.log(destinationBar)
     const span = document.createElement('span')
     span.innerText = destination.city
     span.className = 'destination-span'
