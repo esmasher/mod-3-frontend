@@ -32,10 +32,12 @@ function renderItinerary(itinerary){
     .then(resp => resp.json())
     .then(destination => {
         city.innerHTML = `City: ${destination.city}`
-        hotel.innerHTML = `Hotel: ${destination.hotel}`
+        hotel.innerHTML = `Hotel: ${destination.hotel.hotel}`
         restaurant.innerHTML = `Restaurant: ${destination.restaurant}`
         attraction.innerHTML = `Attraction: ${destination.attraction}`
-        div.append(city, hotel, restaurant, attraction)
+        // div.append(city, hotel, restaurant, attraction)
+        // console.log(destination)
+        div.append(hotel)
     })
 }
 
@@ -55,7 +57,7 @@ function addNewNote(){
     p.innerHTML = note.value
 
     div.append(p)
-   console.log(event.target)
+//    console.log(event.target)
 
   })
 

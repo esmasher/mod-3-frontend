@@ -26,8 +26,9 @@ function renderDestinations(destination){
     span.addEventListener('click', function(e){
         if (e.target.className === 'destination-span'){
             const id = e.target.dataset.id
-            console.log(e.target)
+            // console.log(e.target)
             fetchDestination(id)
+            fetchRestaurants(id)
         }
     })
 }
@@ -65,7 +66,14 @@ function showDestination(destination){
 
 
 
+}
 
+function fetchRestaurants(id){
+
+    fetch("http://localhost:3000/restaurants")
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+    // if (id === res)
 
 }
 
