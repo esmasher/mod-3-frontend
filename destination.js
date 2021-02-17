@@ -1,3 +1,4 @@
+
 function main(){
     fetchName()
 }
@@ -15,17 +16,33 @@ function fetchName(){
 
 // change from P Tag
 function renderDestinations(destination){
-    const body = document.querySelector('body')
-    
-    const pTag = document.createElement('p')
-    pTag.className = 'destination-tag'
-    pTag.dataset.id = destination.id
-    pTag.innerText = destination.city
+    const destinationContainer = document.querySelector('.destination')
+    const span = document.createElement('span')
+    span.innerText = destination.city
+    span.className = 'destination-bar'
+    span.dataset.id = destination.id
+    destinationContainer.append(span)
 
-    
-    
-    body.append(pTag)
+    span.addEventListener('click', function(e){
+        if (e.target.className === 'destination-bar'){
+            const id = e.target.dataset.id
+            fetchDestination(id)
+        }
+    })
 }
+
+function fetchDestination(id){
+    fetch(`http://localhost:3000/destinations/${id}`)
+    .then(resp => resp.json())
+    .then(destination => {
+        showDestination(destination)
+    })
+}
+
+function showDestination(destination){
+
+}
+
 
 
 main()
