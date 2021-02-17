@@ -1,8 +1,24 @@
-.destination {
+#destination-bar {
     height: 15vh;
-    background: rgb(49, 109, 179);
+    background: rgb(22, 27, 102);
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding-bottom: 3vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: solid;
+    color: whitesmoke;
+  }
+
+  #image{
+    width: 400px;
+    height: 300px;
+  }
+
+  .destination{
+    height: 550px;
+    padding: 30px;
+    font-size: 24px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
   }

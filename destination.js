@@ -16,16 +16,17 @@ function fetchName(){
 
 // change from P Tag
 function renderDestinations(destination){
-    const destinationContainer = document.querySelector('.destination')
+    const destinationBar = document.querySelector('#destination-bar')
     const span = document.createElement('span')
     span.innerText = destination.city
-    span.className = 'destination-bar'
+    span.className = 'destination-span'
     span.dataset.id = destination.id
-    destinationContainer.append(span)
+    destinationBar.append(span)
 
     span.addEventListener('click', function(e){
-        if (e.target.className === 'destination-bar'){
+        if (e.target.className === 'destination-span'){
             const id = e.target.dataset.id
+            console.log(e.target)
             fetchDestination(id)
         }
     })
@@ -40,6 +41,31 @@ function fetchDestination(id){
 }
 
 function showDestination(destination){
+    const destinationContainer = document.querySelector('.destination')
+    const h1 = document.querySelector('#city')
+    h1.innerHTML = destination.city
+    const image = document.querySelector('#image')
+    image.setAttribute('src', destination.image)
+    const h4Hotel = document.querySelector('#hotel')
+    h4Hotel.innerText = `Hotels: ${destination.hotel.toString()}`
+   
+
+    const h4Restaurant = document.querySelector('#restaurant')
+    h4Restaurant.innerText = `Restaurants: ${destination.restaurant}`
+
+    const pTagLanguage = document.querySelector('#language')
+    pTagLanguage.innerText = `Language: ${destination.language}` 
+
+
+    const pTagPopulation = document.querySelector('#population')
+    pTagPopulation.innerText = `Population: ${destination.population}`
+
+    const pTagAttraction = document.querySelector('#population')
+    pTagAttraction.innerText = `Attraction: ${destination.attraction}`
+
+    
+
+ 
 
 }
 
