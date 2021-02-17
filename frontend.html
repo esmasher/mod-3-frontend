@@ -8,9 +8,17 @@
   <!-- <link rel="stylesheet" href="css/styles.css?v=1.0"> -->
 </head>
 <body>
-  <div class='destination'></div>
-  <div class='itinerary'></div>
+  <div class='destination'><h3>Destination</h3></div>
   <div class='user'></div>
+  <div class='itinerary'>
+    <h3>Itinerary</h3>
+    <h3></h3>
+    <form id="create-note">
+    <label for="new-note-description">Note:</label>
+    <input type="text" id="new-note" name="new-note" placeholder="Write your notes here...">
+    <input type="submit" value="Create New Note">
+    </form>
+  </div>
   <script defer src="frontend.js"></script>
   <script defer src="destination.js"></script>
   <script defer src="user.js"></script>
