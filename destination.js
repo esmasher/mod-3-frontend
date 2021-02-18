@@ -29,6 +29,8 @@ function renderDestinations(destination){
         if (e.target.className === 'destination-span'){
             const id = e.target.dataset.id
             console.log(e.target)
+            const div = document.querySelector('#hotel')
+            div.innerHTML = ('')
             fetchDestination(id)
         }
     })
@@ -71,6 +73,8 @@ function showDestination(destination){
                     //debugger
                     if (e.target.className === 'hotel-list'){
                         const id = e.target.dataset.id
+                        const div = document.querySelector('#hotel')
+                        div.innerHTML = ('')
                         fetchHotelDetails(id)
                         
                     }
