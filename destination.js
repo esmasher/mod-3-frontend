@@ -72,6 +72,7 @@ function showDestination(destination){
                     if (e.target.className === 'hotel-list'){
                         const id = e.target.dataset.id
                         fetchHotelDetails(id)
+                        
                     }
                 })
             })
@@ -128,7 +129,8 @@ function renderHotel(hotel){
             
         }
     })
-//like a comment??
+
+    
     function displayComments(hotel){
         hotel.reviews.forEach(function(review){
             const pTagComment = document.querySelector('#hotel')
@@ -168,10 +170,11 @@ function renderHotel(hotel){
             deleteBtn.innerText = 'Delete Comment'
             deleteBtn.className = 'delete-btn'
             deleteBtn.dataset.id = review.id
-            pTagComment.append(deleteBtn)
+            const pTagDelete = document.querySelector('#delete')
+            pTagDelete.append(deleteBtn)
             deleteBtn.addEventListener('click', function(e){
                 if (e.target.className === 'delete-btn'){
-                    //debugger
+                    debugger
                     //console.log(e.target)
                     const id = e.target.dataset.id
 
@@ -182,7 +185,7 @@ function renderHotel(hotel){
                     fetch(`http://localhost:3000/reviews/${id}`, reqObj)
                     .then(resp => resp.json())
                     .then(data => {
-                        e.target.parentNode.remove()
+                        e.target.parentElement.previousElementSibling.remove()
                     })
 
                 }
