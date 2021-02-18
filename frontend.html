@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="row">
-      <div class="col-md-10">
+      <div class="col-lg-10">
         <div id="destination-bar">
           <!-- show destinations names here -->
        </div>
@@ -38,15 +38,38 @@
        </div>
       </div>
     </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
           <div class='itinerary'>
-            <h3>Itinerary</h3>
-            <h3></h3>
+            <h4>Itinerary</h4>
+            <h3 class="iti-details"></h3>
+            <h4 id="itinerary-restaurant">Restaurant:</h4>
+            <h4 id="itinerary-hotel">Hotel:</h4>
+            <h4 id="new-hotel-created"></h4>
+            <br>
+            <h5 id="new-note-created">Notes for your Trip:</h5><br>
             <form id="create-note">
-            <label for="new-note-description">Note:</label>
+            <label for="new-note-description">Note:</label><br>
             <input type="text" id="new-note" name="new-note" placeholder="Write your notes here...">
-            <input type="submit" value="Create New Note">
-            </form>
-          </div>
+            <br>
+            <br>
+            <input type="submit" value="Create a New Note">
+            </form><br>
+          <form id="create-hotel">
+              <div class="new-hotel">
+                <label>Hotel Name</label>
+                <input id='hotel-name' name="name" placeholder="Hotel Name..." type="text">
+              </div><br>
+              <div class="new-hotel-rating">
+                <label>Rating</label>
+                <input name="rating" id='hotel-rating' placeholder="Rating..." type="text">
+              </div><br>
+            </div>
+            <button class="ui basic button" type="submit">Add Hotel</button>
+          </form>
+
+
           <script defer src="frontend.js"></script>
           <script defer src="destination.js"></script>
           <script defer src="user.js"></script>
