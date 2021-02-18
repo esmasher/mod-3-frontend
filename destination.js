@@ -1,7 +1,7 @@
 
 function main(){
     fetchName()
-    createCommentFormListener()
+    //createCommentFormListener()
 }
 
 
@@ -130,51 +130,81 @@ function renderHotel(hotel){
         }
     })
 
+
+
+    // function hotelNames(destination){
+    //     destination.hotels.forEach(function(hotel){
+    //         const div = document.querySelector('#hotel')
+    //         //div.innerHTML = ('')
+    //         const pTag = document.createElement('p')
+    //         pTag.className = 'hotel-list'
+    //         pTag.innerText = hotel.name
+    //         pTag.dataset.id = hotel.id
+    //         div.append(pTag)
+    //         pTag.addEventListener('click', function(e){
+    //             //console.log(e.target)
+    //             //debugger
+    //             if (e.target.className === 'hotel-list'){
+    //                 const id = e.target.dataset.id
+    //                 fetchHotelDetails(id)
+                    
+    //             }
+    //         })
+    //     })
+   // }
+
     
     function displayComments(hotel){
         hotel.reviews.forEach(function(review){
-            const pTagComment = document.querySelector('#hotel')
-            pTagComment.innerHTML = review.comment
+            const pTagContainer = document.querySelector('#hotel')
+
+            const pTagComment = document.createElement('p')
+            pTagComment.className = 'comments-list'
+            pTagComment.innerText = review.comment
+            pTagComment.dataset.id = review.id
+            const pTagEmpty = document.createElement('p')
+            pTagContainer.append(pTagComment, pTagEmpty)
+            // pTagComment.innerHTML = review.comment
             
-            const pTagEmpty = document.querySelector('#empty')
-            const newDiv = document.createElement('div')
-            newDiv.className = 'comments-container'
+            // const pTagEmpty = document.querySelector('#empty')
+            // const newDiv = document.createElement('div')
+            // newDiv.className = 'comments-container'
 
-            pTagEmpty.append(newDiv)
+            // pTagEmpty.append(newDiv)
 
-            const form = document.createElement('form')
-            form.className = 'add-a-comment'
-            const pTagCommentName = document.createElement('p')
-            pTagCommentName.innerText = 'Create Comment:    '
-            pTagCommentName.className = 'comments'
-            newDiv.append(form)
-            form.append(pTagCommentName)
+            //take out of loop
 
+            // const form = document.createElement('form')
+            // form.className = 'add-a-comment'
+            // const pTagCommentName = document.createElement('p')
+            // pTagCommentName.innerText = 'Create Comment:    '
+            // pTagCommentName.className = 'comments'
+            // newDiv.append(form)
+            // form.append(pTagCommentName)
 
-            const input = document.createElement('input')
-            input.type = 'text'
-            input.name = 'comment'
-            input.value = ''
-            input.placeholder = 'Enter a comment'
-            input.className = 'input-text'
+            // const input = document.createElement('input')
+            // input.type = 'text'
+            // input.name = 'comment'
+            // input.value = ''
+            // input.placeholder = 'Enter a comment'
+            // input.className = 'input-text'
 
-            const submit = document.createElement('input')
-            submit.type = 'submit'
-            submit.name = 'submit'
-            submit.value = 'Create new comment'
-            submit.className = 'submit'
+            // const submit = document.createElement('input')
+            // submit.type = 'submit'
+            // submit.name = 'submit'
+            // submit.value = 'Create new comment'
+            // submit.className = 'submit'
 
-            pTagCommentName.append(input, submit)
+            // pTagCommentName.append(input, submit)
 
             const deleteBtn = document.createElement('button')
             deleteBtn.innerText = 'Delete Comment'
             deleteBtn.className = 'delete-btn'
             deleteBtn.dataset.id = review.id
-            const pTagDelete = document.querySelector('#delete')
-            pTagDelete.append(deleteBtn)
+            pTagEmpty.append(deleteBtn)
             deleteBtn.addEventListener('click', function(e){
                 if (e.target.className === 'delete-btn'){
-                    debugger
+                    //debugger
                     //console.log(e.target)
                     const id = e.target.dataset.id
 
@@ -186,6 +216,7 @@ function renderHotel(hotel){
                     .then(resp => resp.json())
                     .then(data => {
                         e.target.parentElement.previousElementSibling.remove()
+                        e.target.remove()
                     })
 
                 }
@@ -202,7 +233,7 @@ function renderHotel(hotel){
 
 function likeHotel(e){
     console.log(e.target.dataset.id)
-    debugger
+    //debugger
     const id = e.target.dataset.id
     const pTag = e.target.parentElement
     let likes = parseInt(pTag.innerHTML)
@@ -223,33 +254,33 @@ function likeHotel(e){
     })
 }
 
-function createCommentFormListener(){
-    const form = document.querySelector('.comments-container')
-    form.addEventListener('submit', function(e){
-        e.preventDefault()
-        debugger
-        console.log(e.target)
+// function createCommentFormListener(){
+//     const form = document.querySelector('.comments-container')
+//     form.addEventListener('submit', function(e){
+//         e.preventDefault()
+//         debugger
+//         console.log(e.target)
         
-        const newComment = {
-            comment: e.target.comment.value
-            //, hotel_id: 
-        }
+//         const newComment = {
+//             comment: e.target.comment.value
+//             //, hotel_id: 
+//         }
 
-        const reqObj = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newComment)
-        }
+//         const reqObj = {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify(newComment)
+//         }
 
-        fetch('http://localhost:3000/reviews', reqObj)
-        .then(resp => resp.json())
-        .then(comment => {
-            form.reset()
-            //display comment
-        })
-    })
-}
+//         fetch('http://localhost:3000/reviews', reqObj)
+//         .then(resp => resp.json())
+//         .then(comment => {
+//             form.reset()
+//             //display comment
+//         })
+//     })
+// }
 
 main()
