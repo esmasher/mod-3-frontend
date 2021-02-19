@@ -26,6 +26,12 @@
     left: 0px;
     opacity: .25;
   } */
+
+  .body{
+    background: rgb(240, 248, 255);
+    font-family: "Garamond", serif;
+  }
+
   .row {
     background:  rgb(240, 248, 255);
     color: rgb(12, 12, 12);
@@ -36,11 +42,12 @@
     width: 400px;
     height: 300px;
   }
+
   .itinerary-body{
     background: rgb(240, 248, 255);
     font-family: "Garamond", serif;
-    color: rgb(51, 51, 51)
-    text-align: right;
+    color: rgb(51, 51, 51);
+    text-align: left;
   }
 
   .card-2 {
@@ -54,9 +61,12 @@
   }
 
   .itinerary {
-    height: 30%;
+    height: 40%;
     background: rgb(178, 181, 184);
     color: rgb(12, 12, 12);
+  }
+
+  .text-align-center{
     text-align: center;
   }
 
