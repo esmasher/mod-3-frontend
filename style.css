@@ -10,11 +10,11 @@
     border: solid;
     color: whitesmoke;
   }
-
+/*
   .bg {
     background-image: url("https://www.europebyrail.eu/site/assets/files/1640/karlsruhe-station.jpg");
     position: relative;
-    
+
   }
 
  .bg::before {
@@ -25,13 +25,18 @@
     bottom: 0px;
     left: 0px;
     opacity: .25;
-  }  
+  } */
+  .row {
+    background:  rgb(240, 248, 255);
+    color: rgb(12, 12, 12);
+    text-align: right;
+  }
 
   #image {
     width: 400px;
     height: 300px;
   }
-  .col-md-4{
+  .itinerary-body{
     background: rgb(240, 248, 255);
     font-family: "Garamond", serif;
     color: rgb(51, 51, 51)
@@ -64,13 +69,13 @@
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }
 
-<<<<<<< HEAD
+
   .destination{
     height: 550px;
     padding: 30px;
     font-size: 24px;
     font-family:'Segoe UI', Tahoma, Geneva;
-    text-align: center;
+    text-align: right;
   }
 
   .logo{
@@ -78,7 +83,7 @@
     align-content: left;
   }
 
-  
+
 
   /* body:before {
     content: '';
@@ -90,7 +95,7 @@
     background-image: url('http://weknowyourdreams.com/images/cloud/cloud-11.jpg');
     opacity: 0.25
   }  */
-=======
+
   /* Add some padding inside the card container */
   .card-body-2 {
     align-items: center;
@@ -104,9 +109,7 @@
     padding: 30px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
-<<<<<<< HEAD
   } /*
-=======
   }
 
   #hotel{
@@ -126,5 +129,3 @@
   .remove-hotel{
     margin: 5px;
   }
->>>>>>> b5e08d9fe53a592d2f7f48362b14a34c1ed9ed17
->>>>>>> a148b61b8faae40fd0b0e5f6bf3c23fd4489fec5
