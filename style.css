@@ -10,15 +10,49 @@
     color: whitesmoke;
   }
 
-  #image{
+  .bg {
+    background-image: url("https://www.europebyrail.eu/site/assets/files/1640/karlsruhe-station.jpg");
+    position: relative;
+    
+  }
+
+ .bg::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: .25;
+  }  
+
+  #image {
     width: 400px;
     height: 300px;
   }
 
-  /* .destination{
+  .destination{
     height: 550px;
     padding: 30px;
     font-size: 24px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva;
     text-align: center;
-  } */
+  }
+
+  .logo{
+    height: 150px;
+    align-content: left;
+  }
+
+  
+
+  /* body:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-image: url('http://weknowyourdreams.com/images/cloud/cloud-11.jpg');
+    opacity: 0.25
+  }  */
