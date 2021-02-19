@@ -15,10 +15,27 @@
     height: 300px;
   }
 
-  /* .destination{
+  #detailed-info{
     height: 550px;
     padding: 30px;
-    font-size: 24px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
-  } */
+  }
+
+  #hotel{
+    margin: 10px;
+    display: block;
+  }
+
+  .itinerary{
+    margin: 10px;
+    display: block;
+  }
+
+  .like-it{
+    margin: 5px;
+  }
+
+  .remove-hotel{
+    margin: 5px;
+  }

@@ -54,6 +54,8 @@ function showDestination(destination){
     h1.innerHTML = destination.city
     const image = document.querySelector('#image')
     image.setAttribute('src', destination.image)
+
+
     // console.log(destination.hotels)
     //const ul = document.querySelector('#hotel')
 
@@ -67,7 +69,7 @@ function showDestination(destination){
                 //div.innerHTML = ('')
                 const pTag = document.createElement('p')
                 pTag.className = 'hotel-list'
-                pTag.innerText = hotel.name
+                pTag.innerText = `Hotel: ${hotel.name}`
                 pTag.dataset.id = hotel.id
                 div.append(pTag)
 
@@ -124,6 +126,20 @@ function renderHotel(hotel){
     h1.innerHTML = hotel.name
     const pTagRating = document.querySelector('#language')
     pTagRating.innerHTML = hotel.rating
+
+    //new code
+    // if (hotel.rating === "5 stars"){
+    //     pTagRating.innerHTML = “⭐️⭐️⭐️⭐️⭐️”
+    // }
+    // if (hotel.rating === "4 stars"){
+    //     pTagRating.innerHTML = “⭐️⭐️⭐️⭐️”
+    // }
+    // if (hotel.rating === "3 stars"){
+    //     pTagRating.innerHTML = “⭐️⭐️⭐️”
+    // }
+    //end new code
+
+
     const img = document.querySelector('#image')
     img.setAttribute('src', hotel.image)
     const pTagLike = document.querySelector('#population')
@@ -453,6 +469,7 @@ function addNote(){
 function deleteHotel(hotel, hotell){
     const button = document.createElement('BUTTON')
     button.innerHTML= "Remove Hotel"
+    button.className = 'remove-hotel'
     hotell.append(button)
 
     const id = hotel.id
