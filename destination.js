@@ -30,6 +30,7 @@ function renderDestinations(destination){
 
     span.addEventListener('click', function(e){
         if (e.target.className === 'destination-span'){
+            console.log(e.target)
             const id = e.target.dataset.id
             const div = document.querySelector('#hotel')
             div.innerHTML = ('')
