@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Itinerary Generator</title>
+  <title>Reisomatik</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
   <link rel="stylesheet" href="style.css" />
@@ -38,18 +38,18 @@
           </div>
        </div>
       </div>
-    </div>
     <div class="col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <div class='itinerary'>
-            <h4>Itinerary</h4>
-            <h3 class="iti-details"></h3>
+      <div class="card-2">
+        <div class='itinerary'>
+          <h2>Itinerary</h2>
+          </div>
+      <div class="card-body-2" >
+            <h3 class="iti-details" align="center"></h3>
             <h4 id="itinerary-restaurant">Restaurant:</h4>
             <h4 id="itinerary-hotel">Hotel:</h4>
             <h4 id="new-hotel-created"></h4>
             <br>
-            <h5 id="new-note-created">Notes for your Trip:</h5><br>
+            <h4 id="new-note-created">Notes for your Trip:</h4><br>
             <form id="create-note">
             <label for="new-note-description">Note:</label><br>
             <input type="text" id="new-note" name="new-note" placeholder="Write your notes here...">
@@ -59,16 +59,21 @@
             </form><br>
           <form id="create-hotel">
               <div class="new-hotel">
-                <label>Hotel Name</label>
+                <label>Hotel Name:</label>
                 <input id='hotel-name' name="name" placeholder="Hotel Name..." type="text">
               </div><br>
               <div class="new-hotel-rating">
-                <label>Rating</label>
+                <label>Rating:</label>
                 <input name="rating" id='hotel-rating' placeholder="Rating..." type="text">
+                <br>
+                <input type="submit" value="Add a new Hotel">
               </div><br>
-            </div>
-            <button class="ui basic button" type="submit">Add Hotel</button>
-          </form>
+              <!-- <button class="ui basic button" type="submit">Add Hotel</button> -->
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
           <script defer src="frontend.js"></script>
