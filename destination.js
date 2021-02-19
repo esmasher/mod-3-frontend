@@ -4,6 +4,7 @@ function main(){
     restClick()
     addNote()
     createNewHotel()
+    deleteHotel()
 }
 
 
@@ -30,7 +31,6 @@ function renderDestinations(destination){
     span.addEventListener('click', function(e){
         if (e.target.className === 'destination-span'){
             const id = e.target.dataset.id
-            console.log(e.target)
             const div = document.querySelector('#hotel')
             div.innerHTML = ('')
             fetchRestaurants(id)
@@ -81,7 +81,7 @@ function showDestination(destination){
                         const div = document.querySelector('#hotel')
                         div.innerHTML = ('')
                         fetchHotelDetails(id)
-                        
+
                     }
                 })
             })
@@ -138,7 +138,7 @@ function renderHotel(hotel){
             //debugger
             console.log(e.target)
             likeHotel(e)
-            
+
         }
     })
 
@@ -159,13 +159,13 @@ function renderHotel(hotel){
     //             if (e.target.className === 'hotel-list'){
     //                 const id = e.target.dataset.id
     //                 fetchHotelDetails(id)
-                    
+
     //             }
     //         })
     //     })
    // }
 
-    
+
     function displayComments(hotel){
         hotel.reviews.forEach(function(review){
             const pTagContainer = document.querySelector('#hotel')
@@ -177,7 +177,7 @@ function renderHotel(hotel){
             const pTagEmpty = document.createElement('p')
             pTagContainer.append(pTagComment, pTagEmpty)
             // pTagComment.innerHTML = review.comment
-            
+
             // const pTagEmpty = document.querySelector('#empty')
             // const newDiv = document.createElement('div')
             // newDiv.className = 'comments-container'
@@ -266,34 +266,7 @@ function likeHotel(e){
     })
 }
 
-// function createCommentFormListener(){
-//     const form = document.querySelector('.comments-container')
-//     form.addEventListener('submit', function(e){
-//         e.preventDefault()
-//         debugger
-//         console.log(e.target)
-        
-//         const newComment = {
-//             comment: e.target.comment.value
-//             //, hotel_id: 
-//         }
 
-//         const reqObj = {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify(newComment)
-//         }
-
-//         fetch('http://localhost:3000/reviews', reqObj)
-//         .then(resp => resp.json())
-//         .then(comment => {
-//             form.reset()
-//             //display comment
-//         })
-//     })
-// }
 function fetchRestaurants(id){
     const p = document.createElement('p')
 
@@ -330,7 +303,6 @@ function restClick(){
             .then(restaurant => renderRestaurantDetails(restaurant))
         }
 
-
     })
 }
 
@@ -352,10 +324,7 @@ function fetchItinerary(id){
     const div = document.querySelector(".itinerary")
     const h3 = document.querySelector(".iti-details")
     const city = document.createElement('p')
-
-
     h3.innerHTML = ("")
-    // const hotel = document.createElement('p')
 
     fetch("http://localhost:3000/itineraries")
     .then(resp => resp.json())
@@ -363,13 +332,8 @@ function fetchItinerary(id){
         dest_id = parseInt(itinerary.destination_id)
         if ( parseInt(id) === dest_id){
             city.dataset.id = itinerary.destination_id
-            // hotel.dataset.id = itinerary.id
-            // h4.dataset.id = itinerary.id
-
             city.innerHTML = `Itinerary for: ${itinerary.destination.city}`
-            // hotel.innerHTML = `Hotel: ${itinerary.destination.hotel}`
             h3.append(city)
-
         }
 
     }))
@@ -379,49 +343,46 @@ function fetchItinerary(id){
 function renderItineraryRestaurant(restaurant){
     const div = document.querySelector(".itinerary")
     const h4 = document.querySelector("#itinerary-restaurant")
-    // const h4Tag = document.createElement("h4")
-    h4.innerHTML = ("")
     const rest = document.createElement('p')
 
+    h4.innerHTML = ("")
     rest.dataset.id = restaurant.id
     rest.innerHTML = `Restaurant: ${restaurant.name}`
 
     h4.append(rest)
-    // h4.append(h4Tag)
 }
 
 function renderItineraryHotel(hotel){
     const h4Hotel = document.querySelector("#itinerary-hotel")
-    // const  = document.createElement("h4")
-    h4Hotel.innerHTML = ("")
-    const hotell = document.createElement('p')
-    hotell.dataset.id = hotel.id
-    hotell.innerHTML = `Hotel: ${hotel.name}`
+    const button = document.createElement('BUTTON')
+    button.innerHTML = "Remove Hotel"
+    button.dataset.id = hotel.id
+    button.setAttribute("class", "remove-button")
 
-    h4Hotel.append(hotell)
-    deleteHotel(hotel, hotell)
-    // div.append(h4Hotel)
+    h4Hotel.innerHTML = ("")
+    const pTag = document.createElement('p')
+    pTag.dataset.id = hotel.id
+    pTag.innerHTML = `Hotel: ${hotel.name}`
+
+    pTag.append(button)
+    h4Hotel.append(pTag)
 }
 
 
 
 function addNote(){
     const newNote = document.querySelector(".itinerary")
-    const noteTag = document.querySelector("#new-note-created")
+    const noteTag = document.querySelector("#create-note")
     const destinationId = document.querySelector(".iti-details")
 
     h5 = document.createElement("h5")
     h5.id = "note-details"
 
-
-
-      newNote.addEventListener("submit", function(event){
+      noteTag.addEventListener("submit", function(event){
         event.preventDefault()
-        console.log(destinationId.firstChild.dataset.id)
         const noteNew = event.target["new-note"].value
-        console.log(noteNew)
         const id = destinationId.firstChild.dataset.id
-        // const noteTag = (event.target.previousSibling.previousSibling.previousSibling.previousSibling)
+
 
 
         const reqObj = {
@@ -445,27 +406,24 @@ function addNote(){
                 h5.append(p)
                 noteTag.append(h5)
             })
-
         })
-
 }
 
-function deleteHotel(hotel, hotell){
-    const button = document.createElement('BUTTON')
-    button.innerHTML= "Remove Hotel"
-    hotell.append(button)
+function deleteHotel(){
+    const removeButton = document.querySelector('#itinerary-hotel')
 
-    const id = hotel.id
+    removeButton.addEventListener("click", function(event){
+        event.preventDefault()
+        const idHotel = event.target.dataset.id
 
-    hotell.addEventListener("click", function(event){
         const reqObj = {
             method: 'DELETE'
           }
 
-        fetch(`http://localhost:3000/hotels/${id}`, reqObj)
+        fetch(`http://localhost:3000/hotels/${idHotel}`, reqObj)
           .then(resp => resp.json())
           .then(data => {
-            event.target.parentNode.parentNode.remove()
+            event.target.parentNode.remove()
           })
     })
 }
@@ -474,19 +432,21 @@ function createNewHotel(){
     const form = document.querySelector('#create-hotel')
     const h4Hotel = document.querySelector("#new-hotel-created")
     const destination = document.querySelector('.iti-details')
+    const button = document.createElement('BUTTON')
+    const hotelPTag = document.createElement('p')
 
+    button.innerHTML = "Remove Hotel"
     h4Hotel.innerHTML = ("")
-    const hotell = document.createElement('p')
-
 
     form.addEventListener('submit', function(event){
         event.preventDefault()
+        const destinationNumber = destination.firstChild.dataset.id
 
 
         const newHotel = {
-            name: event.target['name'].value,
+            destination_id: destinationNumber,
             rating: event.target['rating'].value,
-            destination_id: destination.dataset.id,
+            name: event.target['name'].value,
         }
         form.reset()
         const reqObj = {
@@ -499,10 +459,10 @@ function createNewHotel(){
     fetch('http://localhost:3000/hotels', reqObj)
     .then(resp => resp.json())
     .then(hotel => {
-        hotell.dataset.id = hotel.id
-        hotell.innerHTML = `Hotel: ${hotel.name}`
-        h4Hotel.append(hotell)
-        deleteHotel(hotel, hotell)
+        button.dataset.id = hotel.id
+        button.setAttribute("class", "remove-button")
+        hotelPTag.innerHTML = `Hotel: ${hotel.name}`
+        h4Hotel.append(hotelPTag, button)
         })
     })
 }
