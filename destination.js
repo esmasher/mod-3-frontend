@@ -5,6 +5,7 @@ function main(){
     addNote()
     createNewHotel()
     deleteHotel()
+    deleteNewHotel()
 }
 
 
@@ -34,6 +35,9 @@ function renderDestinations(destination){
             const id = e.target.dataset.id
             const div = document.querySelector('#hotel')
             div.innerHTML = ('')
+
+            const divRest = document.querySelector('#restaurant')
+            divRest.innerHTML = ('')
             fetchRestaurants(id)
             fetchDestination(id)
             fetchItinerary(id)
@@ -441,6 +445,20 @@ function deleteHotel(){
           .then(resp => resp.json())
           .then(data => {
             event.target.parentNode.remove()
+          })
+    })
+}
+function deleteNewHotel(){
+    const deleteContainer = document.querySelector('#new-hotel-created')
+    deleteContainer.addEventListener('click', function(e){
+        e.preventDefault()
+        //console.log(e.target)
+        //debugger
+        const id = e.target.dataset.id
+        fetch(`http://localhost:3000/hotels/${id}`, {method: 'DELETE'})
+          .then(resp => resp.json())
+          .then(data => {
+            e.target.parentNode.remove()
           })
     })
 }
